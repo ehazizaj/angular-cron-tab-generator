@@ -1,39 +1,73 @@
-<div class="card" style="width:400px">
+<div class="card" style="width:400px" [formGroup]="parent">
   <div class="card-header text-center bg-dark text-white">
     Minutes
   </div>
   <div class="card-body">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="row">
+      <div class="row" formGroupName="minutes">
         <div class="col-md-6">
           <div class="row">
             <div class="col-xs-12">
-              <div class="btn-group btn-group-vertical" data-toggle="buttons">
-                <label class="btn active">
-                  <input type="radio" name='gender1' checked><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>  Male</span>
-                </label>
-                <label class="btn">
-                  <input type="radio" name='gender1'><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i><span> Female</span>
-                </label>
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="min" id="everyMinute" name="min" value="*" class="custom-control-input">
+                <label class="custom-control-label" for="everyMinute">Every Minute</label>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="min" id="evenMinutes" name="min" value="*/2" class="custom-control-input">
+                <label class="custom-control-label" for="evenMinutes">Even Minutes</label>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="min" id="oddMinutes" name="min" value="1-59/2" class="custom-control-input">
+                <label class="custom-control-label" for="oddMinutes">Odd Minutes</label>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="min" id="every5Minutes" name="min" value="*/5" class="custom-control-input">
+                <label class="custom-control-label" for="every5Minutes">Every 5 Minutes</label>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="min" id="every10Minutes" name="min" value="*/10" class="custom-control-input">
+                <label class="custom-control-label" for="every10Minutes">Every 10 Minutes</label>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="min" id="every15Minutes" name="min" value="*/15" class="custom-control-input">
+                <label class="custom-control-label" for="every15Minutes">Every 15 Minutes</label>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="min" id="every30Minutes" name="min" value="*/30" class="custom-control-input">
+                <label class="custom-control-label" for="every30Minutes">Every 30 Minutes</label>
               </div>
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="row">
-            <div class="col-xs-12">
-              <div class="btn-group btn-group-vertical" data-toggle="buttons">
-                <label class="btn active">
-                  <input type="radio" name='gender1' checked><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>  Male</span>
-                </label>
-                <label class="btn">
-                  <input type="radio" name='gender1'><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i><span> Female</span>
-                </label>
+            <div class="form-group">
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="min" id="range" name="min" class="custom-control-input">
+                <label class="custom-control-label" for="range">Range</label>
               </div>
+              <select multiple class="form-control" id="exampleFormControlSelect2" style="height: 200pt; width: 90pt">
+                <option
+                  *ngFor="let count of listMinuti"
+                  value="{{count}}"
+                >
+                  {{count | number:'2.0'}}
+                </option>
+              </select>
             </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
 </div>

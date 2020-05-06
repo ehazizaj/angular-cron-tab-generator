@@ -1,0 +1,61 @@
+<div class="card" style="width:400px" [formGroup]="parent">
+  <div class="card-header text-center bg-dark text-white">
+    Hours
+  </div>
+  <div class="card-body">
+      <div class="row" formGroupName="hours">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="hours" id="everyHour" name="hours" value="*" class="custom-control-input">
+                <label class="custom-control-label" for="everyHour">Every Hour</label>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="hours" id="evenHours" name="hours" value="*/2" class="custom-control-input">
+                <label class="custom-control-label" for="evenHours">Even Hours</label>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="hours" id="oddHours" name="hours" value="1-23/2" class="custom-control-input">
+                <label class="custom-control-label" for="oddHours">Odd Hours</label>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="hours" id="every6Hours" name="hours" value="*/6" class="custom-control-input">
+                <label class="custom-control-label" for="every6Hours">Every 6 Hours</label>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="hours" id="every12Hours" name="hours" value="*/12" class="custom-control-input">
+                <label class="custom-control-label" for="every12Hours">Every 12 Hours</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="form-group">
+              <div class="custom-control custom-radio">
+                <input type="radio" formControlName="hours" id="rangeHours" name="hours" class="custom-control-input">
+                <label class="custom-control-label" for="rangeHours">Range</label>
+              </div>
+              <select multiple class="form-control" id="exampleFormControlSelect2" style="height: 200pt; width: 90pt">
+                <option
+                  *ngFor="let count of listHours"
+                  value="{{count}}"
+                >
+                  {{count | number:'2.0'}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
