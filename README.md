@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 1- download or clone\
 2- npm install\
-3- ng s -o
+3- ng s -o\
 
 ### Comming Soon
 
