@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Stackblitz Demo
 
-[Stackblitz Demo](stackblitz.com/github.com/ehazizaj/angular-cron-tab-generator)
+[Stackblitz Demo](https://stackblitz.com/github/ehazizaj/angular-cron-tab-generator)
 
 ## Run
 
