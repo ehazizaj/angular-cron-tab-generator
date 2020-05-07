@@ -8,31 +8,31 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="days" id="everyDay" name="days" value="*" class="custom-control-input">
+              <input (change)="onRadio()" type="radio" formControlName="days" id="everyDay" name="days" value="*" class="custom-control-input">
               <label class="custom-control-label" for="everyDay">Every Day</label>
             </div>
           </div>
           <div class="col-xs-12">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="days" id="evenDays" name="days" value="*/2" class="custom-control-input">
+              <input (change)="onRadio()" type="radio" formControlName="days" id="evenDays" name="days" value="*/2" class="custom-control-input">
               <label class="custom-control-label" for="evenDays">Even Hours</label>
             </div>
           </div>
           <div class="col-xs-12">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="days" id="oddDays" name="days" value="1-31/2" class="custom-control-input">
+              <input (change)="onRadio()" type="radio" formControlName="days" id="oddDays" name="days" value="1-31/2" class="custom-control-input">
               <label class="custom-control-label" for="oddDays">Odd Hours</label>
             </div>
           </div>
           <div class="col-xs-12">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="days" id="every6Days" name="days" value="*/6" class="custom-control-input">
+              <input (change)="onRadio()" type="radio" formControlName="days" id="every6Days" name="days" value="*/6" class="custom-control-input">
               <label class="custom-control-label" for="every6Days">Every 6 Hours</label>
             </div>
           </div>
           <div class="col-xs-12">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="days" id="every12Days" name="days" value="*/12" class="custom-control-input">
+              <input (change)="onRadio()" type="radio" formControlName="days" id="every12Days" name="days" value="*/12" class="custom-control-input">
               <label class="custom-control-label" for="every12Days">Every 12 Hours</label>
             </div>
           </div>
@@ -42,13 +42,14 @@
         <div class="row">
           <div class="form-group">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="days" id="rangeDays" name="days" class="custom-control-input">
-              <label class="custom-control-label" for="rangeDays">Range</label>
+              <input type="radio" [checked]="isRange"  disabled class="custom-control-input">
+              <label class="custom-control-label">Range</label>
             </div>
-            <select multiple class="form-control" id="exampleFormControlSelect2" style="height: 200pt; width: 90pt">
+            <select multiple class="form-control" formControlName="range" name="range" id="exampleFormControlSelect2" style="height: 200pt; width: 90pt">
               <option
                 *ngFor="let count of listDays"
                 value="{{count}}"
+                (click)="onRange()"
               >
                 {{count | number:'2.0'}}
               </option>

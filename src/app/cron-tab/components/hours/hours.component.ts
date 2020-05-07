@@ -22,4 +22,18 @@ export class HoursComponent implements OnInit {
     });
   }
 
+  onRange() {
+    this.isRange = true;
+    this.parent.get('hours').patchValue({
+      hours: this.parent.get('hours').get('range').value.toString(),
+    });
+  }
+
+  onRadio() {
+    this.isRange = false;
+    this.parent.get('hours').patchValue({
+      range: ''
+    });
+  }
+
 }

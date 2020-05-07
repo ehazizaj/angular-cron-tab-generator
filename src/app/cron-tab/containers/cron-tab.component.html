@@ -1,25 +1,36 @@
 <form [formGroup]="form">
 
-    <div class="container">
-      <div class="alert alert-secondary" role="alert">
-        Complete the following form to generate a crontab line !
+  <div class="container">
+    <div class="alert alert-secondary" role="alert">
+      Complete the following form to generate a crontab line !
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <app-minutes [parent]="form"></app-minutes>
       </div>
-      <div class="row">
-        <div class="col-md-4">
-          <app-minutes [parent]="form"></app-minutes>
-        </div>
-        <div class="col-md-4">
-          <app-hours [parent]="form"></app-hours>
-        </div>
-        <div class="col-md-4">
-          <app-days [parent]="form"></app-days>
-        </div>
-        <div class="col-md-4" style="padding-top: 25px">
-          <app-months [parent]="form"></app-months>
-        </div>
-        <div class="col-md-4" style="padding-top: 25px; margin-left: 25px">
-          <app-week-days [parent]="form"></app-week-days>
-        </div>
+      <div class="col-md-4">
+        <app-hours [parent]="form"></app-hours>
+      </div>
+      <div class="col-md-4">
+        <app-days [parent]="form"></app-days>
+      </div>
+      <div class="col-md-4">
+        <app-months [parent]="form"></app-months>
+      </div>
+      <div class="col-md-4">
+        <app-week-days [parent]="form"></app-week-days>
       </div>
     </div>
+  </div>
+  <app-command [parent]="form"></app-command>
+  <br>
+  <div class="form-group">
+    <button type="button" class="btn btn-primary" [disabled]="form.invalid">Generate Cron Tab</button>
+  </div>
+  <div class="form-group">
+    <input style="background-color: white;" type="text" disabled formControlName="cronTab" class="form-control"
+           id="cronTab" placeholder="Cron Tab">
+  </div>
 </form>
+
+

@@ -8,43 +8,43 @@
           <div class="row">
             <div class="col-xs-12">
               <div class="custom-control custom-radio">
-                <input type="radio" formControlName="min" id="everyMinute" name="min" value="*" class="custom-control-input">
+                <input (change)="onRadio()" type="radio" formControlName="min" id="everyMinute" name="min" value="*" class="custom-control-input">
                 <label class="custom-control-label" for="everyMinute">Every Minute</label>
               </div>
             </div>
             <div class="col-xs-12">
               <div class="custom-control custom-radio">
-                <input type="radio" formControlName="min" id="evenMinutes" name="min" value="*/2" class="custom-control-input">
+                <input (change)="onRadio()" type="radio" formControlName="min" id="evenMinutes" name="min" value="*/2" class="custom-control-input">
                 <label class="custom-control-label" for="evenMinutes">Even Minutes</label>
               </div>
             </div>
             <div class="col-xs-12">
               <div class="custom-control custom-radio">
-                <input type="radio" formControlName="min" id="oddMinutes" name="min" value="1-59/2" class="custom-control-input">
+                <input (change)="onRadio()" type="radio" formControlName="min" id="oddMinutes" name="min" value="1-59/2" class="custom-control-input">
                 <label class="custom-control-label" for="oddMinutes">Odd Minutes</label>
               </div>
             </div>
             <div class="col-xs-12">
               <div class="custom-control custom-radio">
-                <input type="radio" formControlName="min" id="every5Minutes" name="min" value="*/5" class="custom-control-input">
+                <input (change)="onRadio()" type="radio" formControlName="min" id="every5Minutes" name="min" value="*/5" class="custom-control-input">
                 <label class="custom-control-label" for="every5Minutes">Every 5 Minutes</label>
               </div>
             </div>
             <div class="col-xs-12">
               <div class="custom-control custom-radio">
-                <input type="radio" formControlName="min" id="every10Minutes" name="min" value="*/10" class="custom-control-input">
+                <input (change)="onRadio()" type="radio" formControlName="min" id="every10Minutes" name="min" value="*/10" class="custom-control-input">
                 <label class="custom-control-label" for="every10Minutes">Every 10 Minutes</label>
               </div>
             </div>
             <div class="col-xs-12">
               <div class="custom-control custom-radio">
-                <input type="radio" formControlName="min" id="every15Minutes" name="min" value="*/15" class="custom-control-input">
+                <input (change)="onRadio()" type="radio" formControlName="min" id="every15Minutes" name="min" value="*/15" class="custom-control-input">
                 <label class="custom-control-label" for="every15Minutes">Every 15 Minutes</label>
               </div>
             </div>
             <div class="col-xs-12">
               <div class="custom-control custom-radio">
-                <input type="radio" formControlName="min" id="every30Minutes" name="min" value="*/30" class="custom-control-input">
+                <input (change)="onRadio()" type="radio" formControlName="min" id="every30Minutes" name="min" value="*/30" class="custom-control-input">
                 <label class="custom-control-label" for="every30Minutes">Every 30 Minutes</label>
               </div>
             </div>
@@ -54,13 +54,14 @@
           <div class="row">
             <div class="form-group">
               <div class="custom-control custom-radio">
-                <input type="radio" formControlName="min" id="range" name="min" class="custom-control-input">
-                <label class="custom-control-label" for="range">Range</label>
+                <input type="radio" [checked]="isRange"  disabled class="custom-control-input">
+                <label class="custom-control-label">Range</label>
               </div>
-              <select multiple class="form-control" id="exampleFormControlSelect2" style="height: 200pt; width: 90pt">
+              <select multiple class="form-control" formControlName="range" name="range" id="exampleFormControlSelect2" style="height: 200pt; width: 90pt">
                 <option
                   *ngFor="let count of listMinuti"
                   value="{{count}}"
+                  (click)="onRange()"
                 >
                   {{count | number:'2.0'}}
                 </option>

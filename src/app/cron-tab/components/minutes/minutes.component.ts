@@ -21,19 +21,18 @@ export class MinutesComponent implements OnInit {
       });
     });
   }
+  onRange() {
+    this.isRange = true;
+    this.parent.get('minutes').patchValue({
+      min: this.parent.get('minutes').get('range').value.toString(),
+    });
+  }
 
-  // onMinutiRange() {
-  //   this.parent.get('minutes').patchValue({
-  //     min: this.parent.get('minutes').get('range').value.toString(),
-  //   });
-  //   this.isRange = true;
-  // }
-  //
-  // onMinutiRadio() {
-  //   this.isRange = false;
-  //   this.parent.get('minutes').patchValue({
-  //     range: ''
-  //   });
-  // }
+  onRadio() {
+    this.isRange = false;
+    this.parent.get('minutes').patchValue({
+      range: ''
+    });
+  }
 
 }

@@ -8,31 +8,31 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="months" id="everyMonth" name="months" value="*" class="custom-control-input">
+              <input (change)="onRadio()" type="radio" formControlName="months" id="everyMonth" name="months" value="*" class="custom-control-input">
               <label class="custom-control-label" for="everyMonth">Every Month</label>
             </div>
           </div>
           <div class="col-xs-12">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="months" id="evenMonths" name="months" value="*/2" class="custom-control-input">
+              <input (change)="onRadio()" type="radio" formControlName="months" id="evenMonths" name="months" value="*/2" class="custom-control-input">
               <label class="custom-control-label" for="evenMonths">Even Months</label>
             </div>
           </div>
           <div class="col-xs-12">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="months" id="oddMonths" name="months" value="1-12/2" class="custom-control-input">
+              <input (change)="onRadio()" type="radio" formControlName="months" id="oddMonths" name="months" value="1-12/2" class="custom-control-input">
               <label class="custom-control-label" for="oddMonths">Odd Months</label>
             </div>
           </div>
           <div class="col-xs-12">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="months" id="every4Months" name="months" value="*/4" class="custom-control-input">
+              <input (change)="onRadio()" type="radio" formControlName="months" id="every4Months" name="months" value="*/4" class="custom-control-input">
               <label class="custom-control-label" for="every4Months">Every 4 Months</label>
             </div>
           </div>
           <div class="col-xs-12">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="months" id="every6Months" name="months" value="*/6" class="custom-control-input">
+              <input (change)="onRadio()" type="radio" formControlName="months" id="every6Months" name="months" value="*/6" class="custom-control-input">
               <label class="custom-control-label" for="every6Months">Every 6 Months</label>
             </div>
           </div>
@@ -42,22 +42,17 @@
         <div class="row">
           <div class="form-group">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="months" id="rangeMonths" name="months" class="custom-control-input">
-              <label class="custom-control-label" for="rangeMonths">Range</label>
+              <input type="radio" [checked]="isRange"  disabled class="custom-control-input">
+              <label class="custom-control-label">Range</label>
             </div>
-              <select multiple formControlName="range" class="custom-select" style="height: 200pt; width: 90pt">
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-                <option value="6">June</option>
-                <option value="7">July</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
+            <select multiple class="form-control" formControlName="range" name="range" id="exampleFormControlSelect2" style="height: 200pt; width: 90pt">
+              <option
+                *ngFor="let month of listMonths"
+                value="{{month.id}}"
+                (click)="onRange()"
+              >
+                {{month.name}}
+              </option>
             </select>
           </div>
         </div>

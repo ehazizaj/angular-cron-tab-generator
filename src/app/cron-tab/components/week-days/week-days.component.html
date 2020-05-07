@@ -8,21 +8,21 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="weekday" id="everyWeekDay" name="weekday" value="*"
+              <input (change)="onRadio()" type="radio" formControlName="weekday" id="everyWeekDay" name="weekday" value="*"
                      class="custom-control-input">
               <label class="custom-control-label" for="everyWeekDay">Every Day</label>
             </div>
           </div>
           <div class="col-xs-12">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="weekday" id="monToFri" name="weekday" value="1-5"
+              <input (change)="onRadio()" type="radio" formControlName="weekday" id="monToFri" name="weekday" value="1-5"
                      class="custom-control-input">
               <label class="custom-control-label" for="monToFri">Monday to Friday</label>
             </div>
           </div>
           <div class="col-xs-12">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="weekday" id="weekEnd" name="weekday" value="0,6"
+              <input (change)="onRadio()" type="radio" formControlName="weekday" id="weekEnd" name="weekday" value="0,6"
                      class="custom-control-input">
               <label class="custom-control-label" for="weekEnd">Sunday and Saturday</label>
             </div>
@@ -33,18 +33,17 @@
         <div class="row">
           <div class="form-group">
             <div class="custom-control custom-radio">
-              <input type="radio" formControlName="weekday" id="rangeWeekDays" name="weekday"
-                     class="custom-control-input">
-              <label class="custom-control-label" for="rangeWeekDays">Range</label>
+              <input type="radio" [checked]="isRange"  disabled class="custom-control-input">
+              <label class="custom-control-label">Range</label>
             </div>
-            <select multiple formControlName="weekday" class="custom-select" style="height: 200pt; width: 90pt">
-              <option value="0">Sunday</option>
-              <option value="1">Monday</option>
-              <option value="2">Tuesday</option>
-              <option value="3">Wednesday</option>
-              <option value="4">Thursday</option>
-              <option value="5">Friday</option>
-              <option value="6">Saturday</option>
+            <select multiple class="form-control" formControlName="range" name="range" id="exampleFormControlSelect2" style="height: 200pt; width: 90pt">
+              <option
+                *ngFor="let day of listWeekDays"
+                value="{{day.id}}"
+                (click)="onRange()"
+              >
+                {{day.name}}
+              </option>
             </select>
           </div>
         </div>

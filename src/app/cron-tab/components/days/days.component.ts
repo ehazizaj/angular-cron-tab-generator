@@ -20,5 +20,18 @@ export class DaysComponent implements OnInit {
       });
     });
   }
+  onRange() {
+    this.isRange = true;
+    this.parent.get('days').patchValue({
+      days: this.parent.get('days').get('range').value.toString(),
+    });
+  }
+
+  onRadio() {
+    this.isRange = false;
+    this.parent.get('days').patchValue({
+      range: ''
+    });
+  }
 
 }

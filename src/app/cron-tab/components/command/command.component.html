@@ -1,0 +1,23 @@
+<div class="container formInputs" [formGroup]="parent">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Command to execute <span style="color: red">* </span></label>
+    <input type="text" formControlName="command" class="form-control" id="exampleInputEmail1"  placeholder="Type Command">
+    <small id="emailHelp" class="form-text text-muted">Type your command</small>
+    <small  class="form-text text-muted"  *ngIf="required('command')">
+      <span style="color: red">Command is required</span>
+    </small>
+  </div>
+  <p style="margin-bottom: 2px"><b>Command Examples:</b></p>
+  <p>
+    <label>Execute PHP script: </label>
+    <code>/usr/bin/php /home/username/public_html/cron.php</code>
+  </p>
+  <p>
+    <label>MySQL dump: </label>
+    <code>mysqldump -u root -pPASSWORD database &gt; /root/db.sql</code>
+  </p>
+  <p>
+    <label>Access URL: </label>
+    <code>/usr/bin/wget --spider "http://www.domain.com/cron.php</code>
+  </p>
+</div>
