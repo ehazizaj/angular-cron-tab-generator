@@ -51,16 +51,57 @@ export class CronTabComponent implements OnInit {
     });
   }
 
+
+  get(parent: string, child: string) {
+    return this.form.get(parent).get(child).value;
+  }
+
+  getMinutes() {
+    return this.get('minutes', 'min');
+  }
+
+  getHours() {
+    return this.get('hours', 'hours');
+  }
+
+  getDays() {
+    return this.get('days', 'days');
+  }
+
+  getCommand() {
+    return this.form.get('command').value;
+  }
+
+  getMonths() {
+    return this.get('months', 'months');
+  }
+
+  getWeekdays() {
+    return this.get('weekday', 'weekday');
+  }
+
+  getOutputHandle() {
+    return this.get('handleOutput', 'handle');
+  }
+
+  getOutputHandleFile() {
+    return this.get('handleOutput', 'file');
+  }
+
+
+  getOutputHandleEmail() {
+    return this.get('handleOutput', 'email');
+  }
+
+
   subscribeToValue() {
-    this.form.get('handleOutput').get('handle').valueChanges
+    this.getOutputHandle().valueChanges
       .subscribe(value => this.setNotification(value));
   }
 
   setNotification(handle: string): void {
-
-    const file = this.form.get('handleOutput').get('file');
-    const email = this.form.get('handleOutput').get('email');
-
+    const file = this.getOutputHandleFile();
+    const email = this.getOutputHandleEmail();
     switch (handle) {
       case '>': {
         file.enable();
@@ -92,32 +133,17 @@ export class CronTabComponent implements OnInit {
   }
 
   submit() {
-    const handleOutput = this.form.get('handleOutput').get('handle').value;
+    const handleOutput = this.getOutputHandle();
     switch (handleOutput) {
       case '>/dev/null 2>&1' : {
-        const cron =
-          this.form.get('minutes').get('min').value + ' '
-          + this.form.get('hours').get('hours').value + ' '
-          + this.form.get('days').get('days').value + ' '
-          + this.form.get('months').get('months').value + ' '
-          + this.form.get('weekday').get('weekday').value + ' '
-          + this.form.get('command').value + ' '
-          + handleOutput;
+        const cron = this.cronGen() + handleOutput;
         this.form.patchValue({
           cronTab: cron
         });
         break;
       }
       case '>' : {
-        const cron =
-          this.form.get('minutes').get('min').value + ' '
-          + this.form.get('hours').get('hours').value + ' '
-          + this.form.get('days').get('days').value + ' '
-          + this.form.get('months').get('months').value + ' '
-          + this.form.get('weekday').get('weekday').value + ' '
-          + this.form.get('command').value + ' '
-          + handleOutput + ' '
-          + this.form.get('handleOutput').get('file').value;
+        const cron = this.cronGen()  + handleOutput + ' ' + this.getOutputHandleFile();
         this.form.patchValue({
           cronTab: cron
         });
@@ -126,13 +152,7 @@ export class CronTabComponent implements OnInit {
 
       case 'MAILTO=' : {
         const cron =
-          handleOutput + '"' + this.form.get('handleOutput').get('email').value + '"' + ' '
-          + this.form.get('minutes').get('min').value + ' '
-          + this.form.get('hours').get('hours').value + ' '
-          + this.form.get('days').get('days').value + ' '
-          + this.form.get('months').get('months').value + ' '
-          + this.form.get('weekday').get('weekday').value + ' '
-          + this.form.get('command').value;
+          handleOutput + '"' + this.getOutputHandleEmail() + '"' + ' ' + this.cronGen();
         this.form.patchValue({
           cronTab: cron
         });
@@ -142,4 +162,12 @@ export class CronTabComponent implements OnInit {
     window.scroll(0, 0);
   }
 
+  cronGen() {
+    return   this.getMinutes() + ' '
+      + this.getHours() + ' '
+      + this.getDays() + ' '
+      + this.getMonths() + ' '
+      + this.getWeekdays() + ' '
+      + this.getCommand() + ' ';
+  }
 }
