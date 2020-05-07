@@ -2,9 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 
-# Image
+# Stackblitz Demo
 
-![alt text](https://github.com/ehazizaj/cron-tab-generator/blob/master/src/assets/git.png?raw=true)
+[a link](stackblitz.com/github.com/ehazizaj/angular-cron-tab-generator)
 
 ## Run
 

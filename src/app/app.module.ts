@@ -10,6 +10,9 @@ import { DaysComponent } from './cron-tab/components/days/days.component';
 import { MonthsComponent } from './cron-tab/components/months/months.component';
 import { WeekDaysComponent } from './cron-tab/components/week-days/week-days.component';
 import { CommandComponent } from './cron-tab/components/command/command.component';
+import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CommandHandleComponent } from './cron-tab/components/command-handle/command-handle.component';
 
 
 
@@ -23,6 +26,9 @@ import { CommandComponent } from './cron-tab/components/command/command.componen
     MonthsComponent,
     WeekDaysComponent,
     CommandComponent,
+    TopNavBarComponent,
+    FooterComponent,
+    CommandHandleComponent,
   ],
   imports: [
     BrowserModule,

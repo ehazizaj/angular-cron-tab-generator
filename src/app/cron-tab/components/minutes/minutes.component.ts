@@ -1,4 +1,4 @@
-import { Component, Input, NgZone, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -10,16 +10,11 @@ export class MinutesComponent implements OnInit {
   isRange = false;
   listMinuti: Array<number> = [];
 
-  constructor(private zone: NgZone) {}
+  constructor() {}
   ngOnInit() {
-    this.zone.runOutsideAngular(() => {
       for (let i = 0; i < 60; i++) {
-        setTimeout(() => this.listMinuti.push(i));
+       this.listMinuti.push(i);
       }
-      this.zone.run(() => {
-        setTimeout(() => this.listMinuti, 500);
-      });
-    });
   }
   onRange() {
     this.isRange = true;

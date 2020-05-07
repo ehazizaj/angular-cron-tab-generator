@@ -1,4 +1,4 @@
-import { Component, Input, NgZone, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -9,17 +9,12 @@ export class HoursComponent implements OnInit {
   @Input() parent: FormGroup;
   isRange = false;
   listHours: Array<number> = [];
-  constructor(private zone: NgZone) {}
+  constructor() {}
 
   ngOnInit() {
-    this.zone.runOutsideAngular(() => {
-      for (let i = 0; i < 24; i++) {
-        setTimeout(() => this.listHours.push(i));
-      }
-      this.zone.run(() => {
-        setTimeout(() => this.listHours, 500);
-      });
-    });
+    for (let i = 0; i < 24; i++) {
+      this.listHours.push(i);
+    }
   }
 
   onRange() {

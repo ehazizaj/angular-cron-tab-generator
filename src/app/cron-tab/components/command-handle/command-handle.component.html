@@ -1,0 +1,39 @@
+<div class="container formInputs" [formGroup]="parent">
+  <div formGroupName="handleOutput">
+  <div class="form-group" style="padding-top: 1%">
+    <p>How would you like to handle execution output?</p>
+  </div>
+  <div class="form-inline" >
+    <div class="form-group mb-2">
+      <div class="custom-control custom-radio">
+        <input type="radio" id="mute" formControlName="handle" name="handle" value=">/dev/null 2>&1" class="custom-control-input">
+        <label class="custom-control-label" for="mute">Mute the execution (Don't save or send output)</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group mb-2">
+      <div class="custom-control custom-radio">
+        <input type="radio" formControlName="handle" id="file" name="handle" value=">" class="custom-control-input">
+        <label class="custom-control-label" for="file">Save output to file:</label>
+      </div>
+    </div>
+    <div class="form-group mx-sm-3 mb-2" *ngIf="parent.get('handleOutput').get('handle').value === '>'">
+      <label for="filename" class="sr-only">File</label>
+      <input type="text" formControlName="file" class="form-control" [ngClass]="{'alert-danger': required('file')}" id="filename" placeholder="File *">
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group mb-2">
+      <div class="custom-control custom-radio">
+        <input type="radio" formControlName="handle" id="email" name="handle" value="MAILTO=" class="custom-control-input">
+        <label class="custom-control-label" for="email">Send output to email</label>
+      </div>
+    </div>
+    <div class="form-group mx-sm-3 mb-2" *ngIf="parent.get('handleOutput').get('handle').value === 'MAILTO='">
+      <label for="emailValue" class="sr-only">Email</label>
+      <input type="email" formControlName="email" [ngClass]="{'alert-danger': (pattern('email') || required('email') )}" class="form-control" id="emailValue" placeholder="Email *">
+    </div>
+  </div>
+  </div>
+</div>

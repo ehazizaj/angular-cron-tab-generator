@@ -6,19 +6,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.scss' ]
 })
-export class AppComponent implements OnInit {
-  title = 'cron-tab';
-  form: FormGroup;
+export class AppComponent {
 
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit() {
-    this.initForm();
-  }
-
-  initForm() {
-    this.form = this.fb.group({
-      cron: '',
-    });
-  }
 }

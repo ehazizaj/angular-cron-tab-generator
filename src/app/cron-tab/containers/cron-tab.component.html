@@ -1,34 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-
-  <div class="container">
-    <div class="alert alert-secondary" role="alert">
-      Complete the following form to generate a crontab line !
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <app-minutes [parent]="form"></app-minutes>
-      </div>
-      <div class="col-md-4">
-        <app-hours [parent]="form"></app-hours>
-      </div>
-      <div class="col-md-4">
-        <app-days [parent]="form"></app-days>
-      </div>
-      <div class="col-md-4">
-        <app-months [parent]="form"></app-months>
-      </div>
-      <div class="col-md-4">
-        <app-week-days [parent]="form"></app-week-days>
-      </div>
-    </div>
-  </div>
-  <app-command [parent]="form"></app-command>
+<div class="container">
   <br>
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Generate Cron Tab</button>
-  </div>
-
-
   <div class="alert alert-success" role="alert" *ngIf="form.get('cronTab').value !== ''">
     <h4><span style="color: black">Cron Job Generated (you may copy &amp; paste it to your crontab):</span></h4>
     <div class="form-group">
@@ -36,6 +8,31 @@
              id="cronTab" placeholder="Cron Tab">
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-4">
+      <app-minutes  [parent]="form"></app-minutes>
+    </div>
+    <div class="col-md-4">
+      <app-hours [parent]="form"></app-hours>
+    </div>
+    <div class="col-md-4">
+      <app-days [parent]="form"></app-days>
+    </div>
+    <div class="col-md-4">
+      <app-months [parent]="form"></app-months>
+    </div>
+    <div class="col-md-4">
+      <app-week-days [parent]="form"></app-week-days>
+    </div>
+  </div>
+  <app-command [parent]="form"></app-command>
+  <app-command-handle [parent]="form"></app-command-handle>
+  <br>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Generate Cron Tab</button>
+  </div>
+
+</div>
 </form>
 
 
