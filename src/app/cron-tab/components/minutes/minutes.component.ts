@@ -9,8 +9,6 @@ export class MinutesComponent implements OnInit {
   @Input() parent: FormGroup;
   isRange = false;
   listMinuti: Array<number> = [];
-
-  constructor() {}
   ngOnInit() {
       for (let i = 0; i < 60; i++) {
        this.listMinuti.push(i);

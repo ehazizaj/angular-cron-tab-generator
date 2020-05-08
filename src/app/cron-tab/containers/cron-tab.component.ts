@@ -11,8 +11,7 @@ export class CronTabComponent implements OnInit {
   form: FormGroup;
   @Output() cronTab = new EventEmitter<string>();
 
-  constructor(private fb: FormBuilder) {
-  }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.initForm();
@@ -51,55 +50,12 @@ export class CronTabComponent implements OnInit {
     });
   }
 
-
-  get(parent: string, child: string) {
-    return this.form.get(parent).get(child).value;
-  }
-
-  getMinutes() {
-    return this.get('minutes', 'min');
-  }
-
-  getHours() {
-    return this.get('hours', 'hours');
-  }
-
-  getDays() {
-    return this.get('days', 'days');
-  }
-
-  getCommand() {
-    return this.form.get('command').value;
-  }
-
-  getMonths() {
-    return this.get('months', 'months');
-  }
-
-  getWeekdays() {
-    return this.get('weekday', 'weekday');
-  }
-
-  getOutputHandle() {
-    return this.get('handleOutput', 'handle');
-  }
-
-  getOutputHandleFile() {
-    return this.get('handleOutput', 'file');
-  }
-
-
-  getOutputHandleEmail() {
-    return this.get('handleOutput', 'email');
-  }
-
-
   subscribeToValue() {
     this.getOutputHandle().valueChanges
-      .subscribe(value => this.setNotification(value));
+      .subscribe(value => this.setValidation(value));
   }
 
-  setNotification(handle: string): void {
+  setValidation(handle: string): void {
     const file = this.getOutputHandleFile();
     const email = this.getOutputHandleEmail();
     switch (handle) {
@@ -132,6 +88,61 @@ export class CronTabComponent implements OnInit {
     }
   }
 
+
+  get(parent: string, child: string) {
+    return this.form.get(parent).get(child).value;
+  }
+
+  getMinutes() {
+    return this.get('minutes', 'min');
+  }
+
+  getHours() {
+    return this.get('hours', 'hours');
+  }
+
+  getDays() {
+    return this.get('days', 'days');
+  }
+
+  getCommand() {
+    return this.form.get('command').value;
+  }
+
+  getMonths() {
+    return this.get('months', 'months');
+  }
+
+  getCronTab() {
+    return this.form.get('cronTab').value;
+  }
+
+  getWeekdays() {
+    return this.get('weekday', 'weekday');
+  }
+
+  getOutputHandle() {
+    return this.get('handleOutput', 'handle');
+  }
+
+  getOutputHandleFile() {
+    return this.get('handleOutput', 'file');
+  }
+
+
+  getOutputHandleEmail() {
+    return this.get('handleOutput', 'email');
+  }
+
+  cronGen() {
+    return   this.getMinutes() + ' '
+      + this.getHours() + ' '
+      + this.getDays() + ' '
+      + this.getMonths() + ' '
+      + this.getWeekdays() + ' '
+      + this.getCommand() + ' ';
+  }
+
   submit() {
     const handleOutput = this.getOutputHandle();
     switch (handleOutput) {
@@ -162,12 +173,5 @@ export class CronTabComponent implements OnInit {
     window.scroll(0, 0);
   }
 
-  cronGen() {
-    return   this.getMinutes() + ' '
-      + this.getHours() + ' '
-      + this.getDays() + ' '
-      + this.getMonths() + ' '
-      + this.getWeekdays() + ' '
-      + this.getCommand() + ' ';
-  }
+
 }

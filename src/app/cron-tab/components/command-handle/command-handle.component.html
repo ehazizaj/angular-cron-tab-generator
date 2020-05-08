@@ -18,7 +18,7 @@
         <label class="custom-control-label" for="file">Save output to file:</label>
       </div>
     </div>
-    <div class="form-group mx-sm-3 mb-2" *ngIf="parent.get('handleOutput').get('handle').value === '>'">
+    <div class="form-group mx-sm-3 mb-2" *ngIf="handleOutput() === '>'">
       <label for="filename" class="sr-only">File</label>
       <input type="text" formControlName="file" class="form-control" [ngClass]="{'alert-danger': required('file')}" id="filename" placeholder="File *">
     </div>
@@ -30,7 +30,7 @@
         <label class="custom-control-label" for="email">Send output to email</label>
       </div>
     </div>
-    <div class="form-group mx-sm-3 mb-2" *ngIf="parent.get('handleOutput').get('handle').value === 'MAILTO='">
+    <div class="form-group mx-sm-3 mb-2" *ngIf="handleOutput() === 'MAILTO='">
       <label for="emailValue" class="sr-only">Email</label>
       <input type="email" formControlName="email" [ngClass]="{'alert-danger': (pattern('email') || required('email') )}" class="form-control" id="emailValue" placeholder="Email *">
     </div>

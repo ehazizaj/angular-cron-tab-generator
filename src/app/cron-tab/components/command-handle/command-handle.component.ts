@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -15,6 +15,10 @@ export class CommandHandleComponent {
 
   pattern(name: string) {
     return this.parent.get('handleOutput').get(name).hasError('pattern') && this.parent.get('handleOutput').get(name).touched;
+  }
+
+  handleOutput () {
+    return this.parent.get('handleOutput').get('handle').value;
   }
 
 }
